@@ -19,6 +19,8 @@
   </div>
 
   <div class="input file_upload">
+    <%= f.label :avatar %>
+
     <% if @user.avatar? %>
       <div id="avatar_preview">
         <%= image_tag(@user.avatar.thumbnail.url) %>
@@ -34,7 +36,6 @@
     <% end %>
 
     <div id="avatar_actions">
-      <%= f.label :avatar %>
       <%= f.file_field :avatar %>
       <%= f.hidden_field :avatar_cache %>
     </div>
@@ -42,5 +43,7 @@
 
   <div class="actions">
     <%= content_tag :button, "Save", :type => :submit %>
+    or
+    <%= link_to 'Back', root_path %>
   </div>
 <% end %>

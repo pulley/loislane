@@ -5,11 +5,18 @@
   </div>
 </div>
 
-<ul id="diff_actions">
-  <li><%= link_to "Approval", new_user_commit_approval_path(current_user, @commit) %></li>
-  <li><%= link_to "Concern", new_user_commit_concern_path(current_user, @commit) %></li>
-</ul>
+<div id="diff_actions">
+  <%= link_to "Mark this approved", new_user_commit_approval_path(current_user, @commit), :id => "approve_link" %> or
+  <%= link_to "voice a concern", new_user_commit_concern_path(current_user, @commit), :id => "concern_link" %>
+  <%= javascript_tag do %>
+    Event.observe('approve_link', 'mousedown', function(event) {
 
+      return false;
+    });
+  <% end %>
+</div>
+
+<p id="download"><%= link_to "Download", @commit.diff.url %></p>
 <div id="diff">
   <pre><%= @commit.diff_source %></pre>
 </div>
