@@ -1,9 +1,8 @@
 header h2{font-size:83px;line-height:83px;text-align:center;float:none;}
-.flash_message{margin-top:0;margin-bottom:10px;}
 #container{padding:220px 0;}
 #main{margin:40px 0;}
 .input{float:left;position:relative;opacity:.8;}
-.input label{z-index:1;position:absolute;top:10px;left:10px;color:#999;font-size:19px;line-height:19px;}
+.input label{z-index:1;position:absolute;top:0px;left:10px;color:#999;font-size:19px;line-height:19px;}
 .focused{opacity:1;}
 .filled label{display:none;}
 .input input{width:212px;margin:0 10px 0 0;padding:12px 10px 8px 10px;border:0;font-size:19px;font-weight:bold;}

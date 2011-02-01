@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
   skip_before_filter :authenticate_user!
 
-  # GET /sessions/new
+  # GET /login
   def new
   end
 
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  # DELETE /sessions/1
+  # DELETE /logout
   def destroy
     session[:user_id] = nil
     redirect_to login_path, :notice => "Thanks! You're now logged out."
