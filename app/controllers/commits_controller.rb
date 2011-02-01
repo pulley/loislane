@@ -61,7 +61,7 @@ class CommitsController < ApplicationController
   def update
     respond_to do |format|
       if @commit.update_attributes(params[:commit])
-        format.html { redirect_to(@commit, :notice => 'Commit was successfully updated.') }
+        format.html { redirect_to([@commit.user, @commit], :notice => 'Commit was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

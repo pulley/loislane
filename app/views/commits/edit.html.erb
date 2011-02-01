@@ -2,4 +2,4 @@
 
 <%= render 'form' %>
 
-<p id="links"><%= link_to 'Show', @commit %> or <%= link_to 'Back', commits_path %></p>
+<p id="links"><%= link_to 'Show', [@commit.user, @commit] %> or <%= link_to 'Back', root_path %></p>

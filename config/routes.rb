@@ -1,14 +1,17 @@
 Loislane::Application.routes.draw do
+  get "archive" => "commits#index", :as => "archive"
+
   get "profile" => "users#edit", :as => "profile"
-  resources :users, :only => [:update, :destroy]
+  resources :users, :only => [:update, :destroy] do
+    resources :commits do
+      resources :concerns
+      resources :approvals
+    end
+  end
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   resources :sessions, :only => [:new, :create, :destroy]
-
-  get "archive" => "commits#index", :as => "archive"
-  resources :commits
-  resources :concerns
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

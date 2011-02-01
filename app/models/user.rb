@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :approvals
 
   validates_presence_of :username
+  validates_presence_of :email
 
   mount_uploader :avatar, AvatarUploader
 
