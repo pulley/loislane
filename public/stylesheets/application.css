@@ -65,9 +65,7 @@ pre{overflow-x:auto;}
 .input{margin-bottom:20px;}
 .input label{color:#999;font-size:19px;line-height:19px;padding-top:11px;float:left;margin-right:10px;}
 .input input{width:300px;margin:0 10px 0 0;padding:12px 10px 8px 10px;border:0;font-size:19px;font-weight:bold;float:left;}
-#diff{position:relative;padding:10px;background-color:#222;}
-#diff_actions{position:absolute;top:10px;right:-80px;list-style-type:none;}
-#diff_actions li{padding:10px;background-color:#333;margin-bottom:10px;width:60px;text-align:center;}
+#diff{padding:10px;background-color:#222;}
 #error_explanation{color:#ed1c38;margin-bottom:40px;}
 #error_explanation ul{list-style-type:none;}
 .field_with_errors{float:left;}
