@@ -1,5 +1,0 @@
-<% flash.each do |key, msg| %>
-  <%= content_tag :div, msg, :class => "flash_message", :id => "flash_#{key}" %>
-  <% start_color = key == :alert ? "#ed1c38" : "#06ef00" %>
-  <%= javascript_tag "new Effect.Highlight('flash_#{key}', {startcolor: '#{start_color}', endcolor: '#222222', afterFinish: function(e){ Effect.Fade('flash_#{key}'); return false;}});" %>
-<% end unless flash.blank? %>
