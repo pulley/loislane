@@ -1,0 +1,19 @@
+<div id="message">
+  <%= image_tag(@commit.user.avatar.thumbnail.url, :alt => @commit.user.email, :class => "avatar") %>
+  <div class="bubble">
+    <%= @commit.message %>
+  </div>
+</div>
+
+<div id="diff">
+  <pre><%= @commit.diff_source %></pre>
+</div>
+
+<%= render :partial => 'shared/timestamps', :locals => { :record => @commit } %>
+
+<p id="links">
+  <% if current_user == @commit.user %>
+    <%= link_to 'Edit', edit_commit_path(@commit) %> or
+  <% end %>
+  <%= link_to 'Back', commits_path %>
+</p>

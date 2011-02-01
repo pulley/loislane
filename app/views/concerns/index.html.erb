@@ -1,0 +1,21 @@
+<h1>Listing concerns</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @concerns.each do |concern| %>
+  <tr>
+    <td><%= link_to 'Show', concern %></td>
+    <td><%= link_to 'Edit', edit_concern_path(concern) %></td>
+    <td><%= link_to 'Destroy', concern, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Concern', new_concern_path %>

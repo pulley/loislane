@@ -1,0 +1,46 @@
+<%= form_for @user, :html => {:multipart => true} do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h1><%= @user.username %></h1>
+
+  <div class="input">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="input file_upload">
+    <% if @user.avatar? %>
+      <div id="avatar_preview">
+        <%= image_tag(@user.avatar.thumbnail.url) %>
+
+        <div class="checkbox">
+          <label for="user_remove_avatar">
+            <%= f.check_box :remove_avatar %>
+            Remove
+            <%= javascript_tag "Event.observe('user_remove_avatar', 'click', function(e) { Effect.Fade('avatar_preview'); });" %>
+          </label>
+        </div>
+      </div>
+    <% end %>
+
+    <div id="avatar_actions">
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar %>
+      <%= f.hidden_field :avatar_cache %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= content_tag :button, "Save", :type => :submit %>
+  </div>
+<% end %>

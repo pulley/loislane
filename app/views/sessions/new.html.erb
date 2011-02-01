@@ -1,0 +1,29 @@
+<%= form_tag sessions_path do %>
+  <div class="input">
+    <%= label_tag :username %>
+    <%= text_field_tag :username, params[:username] %>
+  </div>
+
+  <div class="input">
+    <%= label_tag :password %>
+    <%= password_field_tag :password, nil %>
+  </div>
+
+  <%= content_tag :button, "Log in!", :type => :submit %>
+<% end %>
+
+<%= javascript_tag do %>
+  $$('.input input').each(function(e) {
+    Event.observe(e, 'focus', function(event) {
+      this.up().addClassName("focused");
+    });
+
+    Event.observe(e, 'blur', function(event) {
+      this.up().removeClassName("focused");
+    });
+
+    Event.observe(e, 'keypress', function(event) {
+      this.up().addClassName("filled");
+    });
+  });
+<% end %>

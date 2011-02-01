@@ -1,0 +1,35 @@
+<%= form_for @commit, :html => {:multipart => true} do |f| %>
+  <% if @commit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@commit.errors.count, "error") %> prohibited this commit from being saved:</h2>
+
+      <ul>
+      <% @commit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input">
+    <%= f.label :message %>
+    <%= f.text_field :message %>
+  </div>
+
+  <div class="input file_upload">
+    <%= f.label :diff %>
+    <%= f.file_field :diff %>
+    <%= f.hidden_field :diff_cache %>
+  </div>
+
+  <div class="checkbox">
+    <%= f.label :closed %>
+    <%= f.check_box :closed %>
+  </div>
+
+  <%= render :partial => 'shared/timestamps', :locals => { :record => @commit } %>
+
+  <div class="actions">
+    <%= content_tag :button, "Save", :type => :submit %>
+  </div>
+<% end %>

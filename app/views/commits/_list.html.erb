@@ -1,0 +1,24 @@
+<% if @commits %>
+  <ul class="commits">
+    <% @commits.each do |commit| %>
+      <li class="<%= commit.level %>">
+        <div class="what">
+          <h3><%= link_to commit.message, commit_path(commit) %></h3>
+          <p><%= commit.user.email %> <time datetime="<%= commit.created_at.iso8601 %>"><%= commit.created_at.strftime("%a, %b %e at %l:%M %p") %></time></p>
+        </div>
+        <% unless commit.concerns || commit.approvals %>
+          <div class="who">
+            <% if commit.concerns %>
+              <p class="concern <%= commit.level %>"><%= pluralize(commit.concerns.count, "concern") %></p>
+            <% end %>
+            <% if commit.approvals %>
+              <p class="approval"><%= pluralize(commit.approvals.count, "approval") %></p>
+            <% end %>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There is nothing to review at this time.</p>
+<% end %>

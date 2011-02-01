@@ -1,0 +1,6 @@
+<% unless record.new_record? %>
+  <p id="timestamps">
+    Created at <time datetime="<%= record.created_at.iso8601 %>"><%= record.created_at.strftime("%A, %B %e at %l:%M %p") %></time>
+    and last updated at <time datetime="<%= record.updated_at.iso8601 %>"><%= record.updated_at.strftime("%A, %B %e at %l:%M %p") %></time>
+  </p>
+<% end %>

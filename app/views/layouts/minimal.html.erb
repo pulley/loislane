@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+
+        .-.                          .-.
+      ;' (_)        .-.            ;' (_)
+    .:'      .-.    `-'    .     .:'      .-.,,  . ,';.  .-.
+   .:'      ;   ;  ;'    .';    .:'      ;   :   ;;  ;;.;.-'
+ .-:.    .-.`;;'_.;:._..'~.'  .-:.    .-.`:::'-'';  ;;  `:::'
+(_/ `;._.             '      (_/ `;._.          ;    `.
+
+-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Lois Lane</title>
+  <%= stylesheet_link_tag ['application', 'minimal'] %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+<div id="container">
+  <header>
+    <h2>Lois Lane</h2>
+  </header>
+  <div id="main">
+    <%= render 'shared/flash_messages' %>
+    <%= yield %>
+  </div>
+  <footer>
+    <p>This application was built and designed by <a href="http://tonycoconate.com">Tony Coconate</a>.</p>
+  </footer>
+</div>
+</body>
+</html>
