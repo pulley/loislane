@@ -1,0 +1,11 @@
+<%
+  css_class = ""
+  css_class << 'first' if bubble_counter == 0
+  css_class << 'even' if bubble_counter % 2 != 0
+%>
+<%= content_tag "li", :class => (css_class unless css_class.blank?) do %>
+  <%= image_tag(bubble.user.avatar.thumbnail.url, :alt => bubble.user.email, :class => "avatar") %>
+  <div class="bubble">
+    <%= bubble.respond_to?(:comment) ? bubble.comment : bubble.message %>
+  </div>
+<% end %>

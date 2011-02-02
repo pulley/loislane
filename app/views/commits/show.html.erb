@@ -1,28 +1,15 @@
-<div id="message">
-  <%= image_tag(@commit.user.avatar.thumbnail.url, :alt => @commit.user.email, :class => "avatar") %>
-  <div class="bubble">
-    <%= @commit.message %>
-  </div>
-</div>
+<ul id="messages">
+  <%= render :partial => 'shared/bubble', :collection => [@commit, @commit.concerns, @commit.approvals].flatten %>
+</ul>
 
 <div id="diff_actions">
-  <%= link_to "Mark this approved", new_commit_approval_path(@commit), :id => "approve_link" %> or
-  <%= link_to "voice a concern", new_commit_concern_path(@commit), :id => "concern_link" %>
-  <%= javascript_tag do %>
-    Event.observe('approve_link', 'mousedown', function(event) {
-
-      return false;
-    });
-  <% end %>
-</div>
-
-<div id="extras">
-  <p id="count"><%= pluralize(@commit.concerns.count, "concern") %> and <%= pluralize(@commit.approvals.count, "approval") %></p>
-  <p id="download"><%= link_to "Download", @commit.diff.url %></p>
+  <%= link_to "Mark this approved", new_commit_approval_path(@commit) %> or
+  <%= link_to "voice a concern", new_commit_concern_path(@commit) %>
 </div>
 
 <div id="diff">
   <pre><%= @commit.diff_source %></pre>
+  <div id="download"><%= link_to "Download", @commit.diff.url %></div>
 </div>
 
 <%= render :partial => 'shared/timestamps', :locals => { :record => @commit } %>
