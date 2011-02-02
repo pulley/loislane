@@ -10,34 +10,10 @@ describe ConcernsController do
     @mock_concern ||= mock_model(Concern, stubs).as_null_object
   end
 
-  describe "GET index" do
-    it "assigns all concerns as @concerns" do
-      Concern.stub(:all) { [mock_concern] }
-      get :index
-      assigns(:concerns).should eq([mock_concern])
-    end
-  end
-
-  describe "GET show" do
-    it "assigns the requested concern as @concern" do
-      Concern.stub(:find).with("37") { mock_concern }
-      get :show, :id => "37"
-      assigns(:concern).should be(mock_concern)
-    end
-  end
-
   describe "GET new" do
     it "assigns a new concern as @concern" do
       Concern.stub(:new) { mock_concern }
       get :new
-      assigns(:concern).should be(mock_concern)
-    end
-  end
-
-  describe "GET edit" do
-    it "assigns the requested concern as @concern" do
-      Concern.stub(:find).with("37") { mock_concern }
-      get :edit, :id => "37"
       assigns(:concern).should be(mock_concern)
     end
   end
@@ -68,42 +44,6 @@ describe ConcernsController do
         Concern.stub(:new) { mock_concern(:save => false) }
         post :create, :concern => {}
         response.should render_template("new")
-      end
-    end
-  end
-
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested concern" do
-        Concern.stub(:find).with("37") { mock_concern }
-        mock_concern.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :concern => {'these' => 'params'}
-      end
-
-      it "assigns the requested concern as @concern" do
-        Concern.stub(:find) { mock_concern(:update_attributes => true) }
-        put :update, :id => "1"
-        assigns(:concern).should be(mock_concern)
-      end
-
-      it "redirects to the concern" do
-        Concern.stub(:find) { mock_concern(:update_attributes => true) }
-        put :update, :id => "1"
-        response.should redirect_to(concern_url(mock_concern))
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns the concern as @concern" do
-        Concern.stub(:find) { mock_concern(:update_attributes => false) }
-        put :update, :id => "1"
-        assigns(:concern).should be(mock_concern)
-      end
-
-      it "re-renders the 'edit' template" do
-        Concern.stub(:find) { mock_concern(:update_attributes => false) }
-        put :update, :id => "1"
-        response.should render_template("edit")
       end
     end
   end
