@@ -86,3 +86,4 @@ pre{overflow:auto;font-family:Monaco,Courier,fixed;font-size:12px;max-height:500
 .field_with_errors{float:left;}
 .field_with_errors input,.field_with_errors textarea{border:3px solid #ed1c38;}
 a.delete{color:#ed1c38;font-size:12px;font-weight:bold;float:right;}
+.even a.delete{float:left;}
