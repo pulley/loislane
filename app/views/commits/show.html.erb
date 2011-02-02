@@ -12,8 +12,6 @@
   <div id="download"><%= link_to "Download", @commit.diff.url %></div>
 </div>
 
-<%= render :partial => 'shared/timestamps', :locals => { :record => @commit } %>
-
 <p id="links">
   <% if current_user == @commit.user %>
     <%= link_to 'Edit', edit_commit_path(@commit) %> or

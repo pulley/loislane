@@ -11,6 +11,7 @@
             <% if commit.concerns %>
               <p class="concern <%= commit.level %>"><%= pluralize(commit.concerns.count, "concern") %></p>
             <% end %>
+
             <% if commit.approvals %>
               <p class="approval"><%= pluralize(commit.approvals.count, "approval") %></p>
             <% end %>
