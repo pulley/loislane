@@ -1,4 +1,4 @@
-<%= form_for(@concern) do |f| %>
+<%= form_for [@commit, @concern] do |f| %>
   <% if @concern.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@concern.errors.count, "error") %> prohibited this concern from being saved:</h2>
@@ -11,7 +11,13 @@
     </div>
   <% end %>
 
+  <div class="input">
+    <%= f.text_area :comment, :rows => 4 %>
+  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= content_tag :button, "Save", :type => :submit %>
+    or
+    <%= link_to 'Back', commit_path(@commit) %>
   </div>
 <% end %>

@@ -4,7 +4,6 @@ class CreateConcerns < ActiveRecord::Migration
       t.belongs_to :user
       t.belongs_to :commit
       t.string :comment
-      t.boolean :closed, :default => false
 
       t.timestamps
     end

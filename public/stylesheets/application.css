@@ -65,6 +65,7 @@ pre{overflow-x:auto;font-family:Monaco,Courier,fixed;font-size:12px;}
 #links{float:left;color:#666;margin-top:10px;}
 .actions{color:#666;}
 .input{margin-bottom:20px;}
+.input textarea{width:100%;border:0;font-size:15px;padding:5px;}
 .input label{color:#999;font-size:19px;line-height:19px;padding-top:11px;float:left;margin-right:10px;}
 .input input{width:300px;margin:0 10px 0 0;padding:12px 10px 8px 10px;border:0;font-size:19px;font-weight:bold;float:left;}
 #diff{padding:10px;background-color:#222;}
