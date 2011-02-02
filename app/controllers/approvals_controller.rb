@@ -13,7 +13,7 @@ class ApprovalsController < ApplicationController
     @approval.commit = @commit
 
     if @approval.save
-      redirect_to @approval, :notice => 'Approval was successfully created.'
+      redirect_to @commit, :notice => 'Approval was successfully created.'
     else
       render :action => "new"
     end

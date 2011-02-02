@@ -16,7 +16,11 @@
   <% end %>
 </div>
 
-<p id="download"><%= link_to "Download", @commit.diff.url %></p>
+<div id="extras">
+  <p id="count"><%= pluralize(@commit.concerns.count, "concern") %> and <%= pluralize(@commit.approvals.count, "approval") %></p>
+  <p id="download"><%= link_to "Download", @commit.diff.url %></p>
+</div>
+
 <div id="diff">
   <pre><%= @commit.diff_source %></pre>
 </div>
