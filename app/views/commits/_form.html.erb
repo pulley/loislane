@@ -1,4 +1,4 @@
-<%= form_for [current_user, @commit], :html => {:multipart => true} do |f| %>
+<%= form_for @commit, :html => {:multipart => true} do |f| %>
   <% if @commit.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@commit.errors.count, "error") %> prohibited this commit from being saved:</h2>
@@ -29,6 +29,9 @@
 
   <div class="actions">
     <%= content_tag :button, "Save", :type => :submit %>
+    <% if !@commit.new_record? %>
+      <%= link_to "Delete", commit_path(@commit), :method => :delete %>
+    <% end %>
     or
     <%= link_to 'Back', root_path %>
   </div>

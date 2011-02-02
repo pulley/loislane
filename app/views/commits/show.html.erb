@@ -6,8 +6,8 @@
 </div>
 
 <div id="diff_actions">
-  <%= link_to "Mark this approved", new_user_commit_approval_path(current_user, @commit), :id => "approve_link" %> or
-  <%= link_to "voice a concern", new_user_commit_concern_path(current_user, @commit), :id => "concern_link" %>
+  <%= link_to "Mark this approved", new_commit_approval_path(@commit), :id => "approve_link" %> or
+  <%= link_to "voice a concern", new_commit_concern_path(@commit), :id => "concern_link" %>
   <%= javascript_tag do %>
     Event.observe('approve_link', 'mousedown', function(event) {
 
@@ -25,7 +25,7 @@
 
 <p id="links">
   <% if current_user == @commit.user %>
-    <%= link_to 'Edit', edit_user_commit_path(@commit.user, @commit) %> or
+    <%= link_to 'Edit', edit_commit_path(@commit) %> or
   <% end %>
   <%= link_to 'Back', root_path %>
 </p>

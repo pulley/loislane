@@ -24,7 +24,7 @@ class ApprovalsController < ApplicationController
   # GET /approvals/new
   # GET /approvals/new.xml
   def new
-    @approval = Approval.new
+    @approval = Approval.new(:user => current_user, :commit => params[:commit_id])
 
     respond_to do |format|
       format.html # new.html.erb

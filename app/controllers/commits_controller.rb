@@ -47,8 +47,8 @@ class CommitsController < ApplicationController
 
     respond_to do |format|
       if @commit.save
-        format.html { redirect_to([current_user, @commit], :notice => 'Commit was successfully created.') }
-        format.xml  { render :xml => @commit, :status => :created, :location => [current_user, @commit] }
+        format.html { redirect_to(@commit, :notice => 'Commit was successfully created.') }
+        format.xml  { render :xml => @commit, :status => :created, :location => @commit }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @commit.errors, :status => :unprocessable_entity }
@@ -61,7 +61,7 @@ class CommitsController < ApplicationController
   def update
     respond_to do |format|
       if @commit.update_attributes(params[:commit])
-        format.html { redirect_to([@commit.user, @commit], :notice => 'Commit was successfully updated.') }
+        format.html { redirect_to(@commit, :notice => 'Commit was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

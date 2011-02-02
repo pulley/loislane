@@ -3,7 +3,7 @@
     <% @commits.each do |commit| %>
       <li class="<%= commit.level %>">
         <div class="what">
-          <h3><%= link_to commit.message, user_commit_path(commit.user, commit) %></h3>
+          <h3><%= link_to commit.message, commit_path(commit) %></h3>
           <p><%= commit.user.email %> <time datetime="<%= commit.created_at.iso8601 %>"><%= commit.created_at.strftime("%a, %b %e at %l:%M %p") %></time></p>
         </div>
         <% unless commit.concerns || commit.approvals %>
