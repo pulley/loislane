@@ -6,24 +6,17 @@ class UsersController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to(root_path, :notice => 'User was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
-      end
+    if @user.update_attributes(params[:user])
+      redirect_to root_path, :notice => 'User was successfully updated.'
+    else
+      render :action => "edit"
     end
   end
 
   def destroy
     @user.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(users_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to root_path
   end
 
 private
