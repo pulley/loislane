@@ -1,12 +1,12 @@
 class ConcernsController < ApplicationController
   before_filter :setup_commit
 
-  # GET /concerns/new
+  # GET /commits/1/concerns/new
   def new
     @concern = Concern.new(:user => current_user, :commit => @commit)
   end
 
-  # POST /concerns
+  # POST /commits/1/concerns
   def create
     @concern = Concern.new(params[:concern])
     @concern.user = current_user
@@ -19,12 +19,12 @@ class ConcernsController < ApplicationController
     end
   end
 
-  # DELETE /concerns/1
+  # DELETE /commits/1/concerns/1
   def destroy
     @concern = Concern.find(params[:id])
     @concern.destroy
 
-    redirect_to concerns_path
+    redirect_to @commit
   end
 
 private

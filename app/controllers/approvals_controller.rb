@@ -24,7 +24,7 @@ class ApprovalsController < ApplicationController
     @approval = Approval.find(params[:id])
     @approval.destroy
 
-    redirect_to approvals_url
+    redirect_to @commit
   end
 
 private

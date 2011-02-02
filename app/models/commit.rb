@@ -1,7 +1,7 @@
 class Commit < ActiveRecord::Base
   belongs_to :user
-  has_many :concerns
-  has_many :approvals
+  has_many :concerns, :dependent => :destroy
+  has_many :approvals, :dependent => :destroy
 
   validates_presence_of :user
   validates_presence_of :message
