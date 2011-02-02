@@ -1,12 +1,20 @@
 <%
-  css_class = ""
-  css_class << 'first' if bubble_counter == 0
-  css_class << 'even' if bubble_counter % 2 != 0
+  css_arr = []
+  css_arr << 'first' if bubble_counter == 0
+  css_arr << 'even' if bubble_counter % 2 != 0
+  css_class = css_arr.join(" ")
 %>
 <%= content_tag "li", :class => (css_class unless css_class.blank?) do %>
   <%= image_tag(bubble.user.avatar.thumbnail.url, :alt => bubble.user.email, :class => "avatar") %>
   <div class="bubble">
-    <p><%= bubble.respond_to?(:comment) ? bubble.comment : bubble.message %></p>
+    <p>
+      <%= bubble.respond_to?(:comment) ? bubble.comment : bubble.message %>
+    </p>
+
+    <%= content_tag "span", :class => "type" do %>
+      <%= bubble.class.name %>
+    <% end unless bubble.class.name == "Commit" %>
+
     <% if current_user == bubble.user %>
       <% path_method = bubble.class.table_name.singularize == "commit" ? send("commit_path".to_sym, bubble) : send("commit_#{bubble.class.table_name.singularize}_path".to_sym, bubble.commit, bubble) %>
       <%= link_to "Delete", path_method, :method => :delete, :class => "delete" %>
