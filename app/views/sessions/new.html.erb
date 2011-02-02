@@ -1,7 +1,7 @@
 <%= form_tag sessions_path do %>
   <div class="input">
     <%= label_tag :username %>
-    <%= text_field_tag :username, params[:username], :autocomplete => "off" %>
+    <%= text_field_tag :username, nil, :autocomplete => "off" %>
   </div>
 
   <div class="input">
@@ -20,6 +20,9 @@
 
     Event.observe(e, 'blur', function(event) {
       this.up().removeClassName("focused");
+      if(this.value.blank()) {
+        this.up().removeClassName("filled");
+      }
     });
 
     Event.observe(e, 'keypress', function(event) {
