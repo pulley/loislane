@@ -26,7 +26,8 @@ namespace :deploy do
   end
 
   task :symlink_shared do
-    run "ln -snf /Users/#{user}/Sites/#{application}/shared/ldap.rb #{release_path}/config/initializers"
+    run "ln -snf #{shared_path}/configs/ldap.rb #{release_path}/config/initializers"
+    run "ln -snf #{shared_path}/uploads #{release_path}/public/uploads"
   end
 end
 
