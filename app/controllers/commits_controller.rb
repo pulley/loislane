@@ -1,4 +1,6 @@
 class CommitsController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :only => [:create]
+
   before_filter :verify_ownership, :only => [:edit, :update, :destroy]
 
   # GET /commits
