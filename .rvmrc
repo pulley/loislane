@@ -2,8 +2,8 @@
 # bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )
 # Add this line to your .profile:
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-if [[ -s "~/.rvm/environments/ree-1.8.7-2010.02@loislane" ]] ; then
-  . "~/.rvm/environments/ree-1.8.7-2010.02@loislane"
+if [[ -s "~/.rvm/environments/ree@loislane" ]] ; then
+  . "~/.rvm/environments/ree@loislane"
 else
-  rvm --create use "ree-1.8.7-2010.02@loislane"
+  rvm --create use "ree@loislane"
 fi

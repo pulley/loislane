@@ -1,6 +1,7 @@
 .bundle
 db/*.sqlite3
 log/*.log
+tmp
 tmp/**/*
 public/uploads/**/*
 config/initializers/ldap.rb
