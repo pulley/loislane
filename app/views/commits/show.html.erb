@@ -1,5 +1,5 @@
 <ul id="messages">
-  <%= render :partial => 'shared/bubble', :collection => [@commit, @commit.concerns, @commit.approvals].flatten %>
+  <%= render :partial => 'shared/bubble', :collection => [@commit, @commit.concerns, @commit.approvals].flatten.sort!{|a,b| a.created_at <=> b.created_at } %>
 </ul>
 
 <div id="diff_actions">

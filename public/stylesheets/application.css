@@ -64,14 +64,14 @@ input[type="file"]{font-size:17px;font-weight:bold;white-space:nowrap;padding:10
 .bubble:before{content:'';position:absolute;top:7px;left:0%;margin-left:-3px;width:20px;height:20px;background:#ccc;z-index:-1;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);}
 .even .bubble{border-right:0;border-left:1px solid #fff;float:right;text-align:right;}
 .even .bubble:before{position:absolute;left:100%;margin-left:-16px;}
-.bubble.approval{background-color:#7bff78;border-color:#ceffcd;}
-.bubble.approval:before{background-color:#7bff78;}
-.bubble.concern{background-color:#f6f48a;border-color:#fbfac9;}
-.bubble.concern:before{background-color:#f6f48a;}
+.bubble.approval{background-color:#adffab;border-color:#dfffde;}
+.bubble.approval:before{background-color:#adffab;}
+.bubble.concern{background-color:#f7f59a;border-color:#fcfbd9;}
+.bubble.concern:before{background-color:#f7f59a;}
 .first .bubble{border-bottom:1px solid #444;border-right:1px solid #444;max-width:460px;background:#fff;font-size:21px;font-weight:bold;padding:20px 30px;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;}
 .first .bubble:before{top:20px;left:0%;background:#fff;}
 #messages li .timestamp{font-size:11px;color:#666;margin-top:10px;text-align:center;display:inline-block;width:100%;}
-#messages li .timestamp a.delete{margin-left:1em;}
+#messages li .timestamp .delete{margin-left:1em;color:#ed1c38;}
 #messages .first .avatar{width:60px;height:60px;}
 #messages .even .avatar{float:right;margin-right:0;margin-left:15px;}
 pre{overflow:auto;font-family:Monaco,Courier,monospace;font-size:12px;max-height:500px;}

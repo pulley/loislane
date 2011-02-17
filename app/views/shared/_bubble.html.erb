@@ -18,11 +18,11 @@
 
     from <%= mail_to bubble.user.email %>
 
-    at <time datetime="<%= bubble.updated_at.iso8601 %>"><%= bubble.updated_at.strftime("%A, %B #{bubble.updated_at.day.ordinalize} at %l:%M%p") %></time>
+    on <time datetime="<%= bubble.created_at.iso8601 %>"><%= bubble.created_at.strftime("%A, %B #{bubble.created_at.day.ordinalize} at %l:%M%p") %></time>
 
     <% if current_user == bubble.user %>
       <% path_method = bubble.class.table_name.singularize == "commit" ? send("commit_path".to_sym, bubble) : send("commit_#{bubble.class.table_name.singularize}_path".to_sym, bubble.commit, bubble) %>
-      <%= link_to "Delete", path_method, :method => :delete, :class => "delete" %>
+      <%= link_to "Delete", path_method, :method => :delete, :class => "delete", :confirm => "Are you sure?" %>
     <% end %>
   </p>
 <% end %>

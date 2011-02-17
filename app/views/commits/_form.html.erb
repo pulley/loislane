@@ -30,7 +30,7 @@
   <div class="actions">
     <%= content_tag :button, "Save", :type => :submit %>
     <% if !@commit.new_record? %>
-      <%= link_to "Delete", commit_path(@commit), :method => :delete %>
+      <%= link_to "Delete", commit_path(@commit), :method => :delete, :confirm => "Are you sure?" %>
     <% end %>
     or
     <%= link_to 'Back', root_path %>
