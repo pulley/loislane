@@ -19,9 +19,9 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-private
+  private
 
-  def set_current_user
-    @user = current_user
-  end
+    def set_current_user
+      @user = current_user
+    end
 end

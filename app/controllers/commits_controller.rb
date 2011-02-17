@@ -57,16 +57,16 @@ class CommitsController < ApplicationController
     redirect_to commits_url
   end
 
-private
+  private
 
-  def verify_ownership
-    @commit = Commit.find(params[:id])
+    def verify_ownership
+      @commit = Commit.find(params[:id])
 
-    if current_user != @commit.user
-      flash.now.alert = "Sorry, this isn't your commit!"
-      return false
-    else
-      return true
+      if current_user != @commit.user
+        flash.now.alert = "Sorry, this isn't your commit!"
+        return false
+      else
+        return true
+      end
     end
-  end
 end

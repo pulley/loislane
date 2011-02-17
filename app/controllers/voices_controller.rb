@@ -8,7 +8,7 @@ class VoicesController < ApplicationController
     @voice.commit = @commit
 
     if @voice.save
-      render :partial => "shared/bubble", :locals => {:bubble => @voice, :bubble_counter => @commit.voices.count+1}, :status => :created, :layout => false
+      render :partial => "shared/bubble", :locals => {:bubble => @voice, :bubble_counter => (@commit.voices.count + 1)}, :status => :created, :layout => false
     else
       render :json => @voice.errors, :status => :unprocessable_entity
     end
@@ -19,12 +19,12 @@ class VoicesController < ApplicationController
     @voice = Voice.find(params[:id])
     @voice.destroy
 
-    redirect_to @commit, :notice => 'Maybe voice another concern or approval?'
+    render :json => { :success => true, :message => "Destroyed Voice #{@voice.id}" }
   end
 
-private
+  private
 
-  def setup_commit
-    @commit = Commit.find(params[:commit_id])
-  end
+    def setup_commit
+      @commit = Commit.find(params[:commit_id])
+    end
 end
