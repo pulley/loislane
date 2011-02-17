@@ -5,19 +5,22 @@
   css_class = css_arr.join(" ")
 %>
 <%= content_tag "li", :class => (css_class unless css_class.blank?) do %>
-  <%= image_tag(bubble.user.avatar.thumbnail.url, :alt => bubble.user.email, :class => "avatar") %>
-  <div class="bubble">
-    <p>
-      <%= bubble.respond_to?(:comment) ? bubble.comment : bubble.message %>
-    </p>
+  <div>
+    <%= image_tag(bubble.user.avatar.thumbnail.url, :alt => bubble.user.email, :class => "avatar") %>
+    <div class="bubble <%= bubble.class.name.underscore %>">
+      <p>
+        <%= bubble.respond_to?(:comment) ? bubble.comment : bubble.message %>
+      </p>
+    </div>
+  </div>
+  <p class="timestamp">
+    <%= bubble.class.name %>
 
-    <%= content_tag "span", :class => "type" do %>
-      <%= bubble.class.name %>
-    <% end unless bubble.class.name == "Commit" %>
+    from <%= mail_to bubble.user.email %>
 
     <% if current_user == bubble.user %>
       <% path_method = bubble.class.table_name.singularize == "commit" ? send("commit_path".to_sym, bubble) : send("commit_#{bubble.class.table_name.singularize}_path".to_sym, bubble.commit, bubble) %>
       <%= link_to "Delete", path_method, :method => :delete, :class => "delete" %>
     <% end %>
-  </div>
+  </p>
 <% end %>

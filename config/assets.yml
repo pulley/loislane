@@ -1,0 +1,15 @@
+javascripts:
+  application:
+    - public/javascripts/prototype.js
+    - public/javascripts/effects.js
+    - public/javascripts/dragdrop.js
+    - public/javascripts/controls.js
+    - public/javascripts/rails.js
+    - public/javascripts/application.js
+stylesheets:
+  application:
+    - public/stylesheets/application.css
+    - public/stylesheets/uv/twilight.css
+  minimal:
+    - public/stylesheets/application.css
+    - public/stylesheets/minimal.css
