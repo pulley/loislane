@@ -7,8 +7,9 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(params[:user])
-      redirect_to root_path, :notice => 'User was successfully updated.'
+      redirect_to root_path, :notice => 'Your profile has been successfully updated.'
     else
+      flash.now.alert = "Something went wrong updating your profile!"
       render :action => "edit"
     end
   end
@@ -16,7 +17,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
 
-    redirect_to root_path
+    redirect_to root_path, :notice => 'Oh no! We hate to see you go.'
   end
 
   private

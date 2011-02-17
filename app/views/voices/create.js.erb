@@ -1,0 +1,10 @@
+<%
+  flash = {}
+  if @voice.errors.blank?
+    flash[:notice] = "Thanks! Your voice has been heard."
+  else
+    flash[:alert] = "Error! #{@voice.errors.full_messages.join(". ")}"
+  end
+%>
+
+$(document.body).insert('<%= escape_javascript(render(:partial => 'shared/flash_messages', :locals => {:flash => flash})) %>');

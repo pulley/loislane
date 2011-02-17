@@ -1,17 +1,13 @@
 class VoicesController < ApplicationController
+  respond_to :js
+
   before_filter :setup_commit
 
   # POST /commits/1/voices
   def create
-    @voice = Voice.new(params[:voice])
-    @voice.user = current_user
-    @voice.commit = @commit
+    @voice = Voice.create(params[:voice].merge({:user_id => current_user.id, :commit_id => @commit.id}))
 
-    if @voice.save
-      render :partial => "shared/bubble", :locals => {:bubble => @voice, :bubble_counter => (@commit.voices.count + 1)}, :status => :created, :layout => false
-    else
-      render :json => @voice.errors, :status => :unprocessable_entity
-    end
+    respond_with @voice
   end
 
   # DELETE /commits/1/voices/1
@@ -19,7 +15,7 @@ class VoicesController < ApplicationController
     @voice = Voice.find(params[:id])
     @voice.destroy
 
-    render :json => { :success => true, :message => "Destroyed Voice #{@voice.id}" }
+    respond_with @voice
   end
 
   private
