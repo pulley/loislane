@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   has_many :commits
-  has_many :concerns
-  has_many :approvals
+  has_many :voices
 
   validates_presence_of :username
   validates_presence_of :email

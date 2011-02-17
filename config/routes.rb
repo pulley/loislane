@@ -5,8 +5,7 @@ Loislane::Application.routes.draw do
   resources :users, :only => [:update, :destroy]
 
   resources :commits do
-    resources :concerns, :only => [:new, :create, :destroy]
-    resources :approvals, :only => [:new, :create, :destroy]
+    resources :voices, :only => [:create, :destroy]
   end
 
   get "logout" => "sessions#destroy", :as => "logout"

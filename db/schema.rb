@@ -12,14 +12,6 @@
 
 ActiveRecord::Schema.define(:version => 20110127220721) do
 
-  create_table "approvals", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "commit_id"
-    t.string   "comment"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "commits", :force => true do |t|
     t.integer  "user_id"
     t.string   "diff"
@@ -29,19 +21,19 @@ ActiveRecord::Schema.define(:version => 20110127220721) do
     t.datetime "updated_at"
   end
 
-  create_table "concerns", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "commit_id"
-    t.string   "comment"
-    t.boolean  "closed",     :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "email"
     t.string   "avatar"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "voices", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "commit_id"
+    t.string   "comment"
+    t.string   "tone"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

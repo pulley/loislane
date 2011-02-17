@@ -12,12 +12,12 @@ class CommitsController < ApplicationController
   # GET /commits/1
   def show
     @commit = Commit.find(params[:id])
+    @voice = Voice.new
   end
 
   # GET /commits/new
   def new
     @commit = Commit.new
-    @commit.user = current_user
   end
 
   # GET /commits/1/edit
@@ -65,6 +65,8 @@ private
     if current_user != @commit.user
       flash.now.alert = "Sorry, this isn't your commit!"
       return false
+    else
+      return true
     end
   end
 end

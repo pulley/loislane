@@ -7,22 +7,18 @@
 <%= content_tag "li", :class => (css_class unless css_class.blank?) do %>
   <div>
     <%= image_tag(bubble.user.avatar.thumbnail.url, :alt => bubble.user.email, :class => "avatar") %>
-    <div class="bubble <%= bubble.class.name.underscore %>">
+    <div class="bubble <%= bubble.class == Commit ? "commit" : bubble.tone %>">
       <p>
-        <%= bubble.respond_to?(:comment) ? bubble.comment : bubble.message %>
+        <%= bubble.comment %>
       </p>
     </div>
   </div>
   <p class="timestamp">
-    <%= bubble.class.name %>
-
-    from <%= mail_to bubble.user.email %>
-
-    on <time datetime="<%= bubble.created_at.iso8601 %>"><%= bubble.created_at.strftime("%A, %B #{bubble.created_at.day.ordinalize} at %l:%M%p") %></time>
+    <%= bubble.class == Commit ? "Commit" : bubble.tone.titlecase %> from <%= mail_to bubble.user.email %> on <time datetime="<%= bubble.created_at.iso8601 %>"><%= bubble.created_at.strftime("%A, %B #{bubble.created_at.day.ordinalize} at %l:%M%p") %></time>.
 
     <% if current_user == bubble.user %>
-      <% path_method = bubble.class.table_name.singularize == "commit" ? send("commit_path".to_sym, bubble) : send("commit_#{bubble.class.table_name.singularize}_path".to_sym, bubble.commit, bubble) %>
-      <%= link_to "Delete", path_method, :method => :delete, :class => "delete", :confirm => "Are you sure?" %>
+      <% path_method = bubble.class == Commit ? send("commit_path".to_sym, bubble) : send("commit_voice_path".to_sym, bubble.commit, bubble) %>
+      <%= link_to "Delete", path_method, :method => :delete, :class => "delete", :confirm => "Are you sure?", :remote => (bubble.class == Commit ? false : true) %>
     <% end %>
   </p>
 <% end %>

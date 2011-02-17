@@ -1,10 +1,26 @@
 <ul id="messages">
-  <%= render :partial => 'shared/bubble', :collection => [@commit, @commit.concerns, @commit.approvals].flatten.sort!{|a,b| a.created_at <=> b.created_at } %>
+  <%= render :partial => 'shared/bubble', :collection => [@commit, @commit.voices].flatten.sort!{ |a,b| a.created_at <=> b.created_at } %>
 </ul>
 
 <div id="diff_actions">
-  <%= link_to "Mark this approved", new_commit_approval_path(@commit) %> or
-  <%= link_to "voice a concern", new_commit_concern_path(@commit) %>
+  <%= form_for [@commit, @voice], :remote => true do |f| %>
+    <% if @voice.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@voice.errors.count, "error") %> prohibited this approval from being saved:</h2>
+
+        <ul>
+        <% @voice.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div id="voice">
+      <% tones_array = Voice.tones.map{ |tone| [tone.titlecase, tone] } %>
+      I have a <%= f.select :tone, tones_array %>, <%= f.text_field :comment %> <%= content_tag :button, "Speak up!", :type => :submit %>
+    </div>
+  <% end %>
 </div>
 
 <div id="diff">

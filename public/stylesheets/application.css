@@ -71,7 +71,7 @@ input[type="file"]{font-size:17px;font-weight:bold;white-space:nowrap;padding:10
 .first .bubble{border-bottom:1px solid #444;border-right:1px solid #444;max-width:460px;background:#fff;font-size:21px;font-weight:bold;padding:20px 30px;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;}
 .first .bubble:before{top:20px;left:0%;background:#fff;}
 #messages li .timestamp{font-size:11px;color:#666;margin-top:10px;text-align:center;display:inline-block;width:100%;}
-#messages li .timestamp .delete{margin-left:1em;color:#ed1c38;}
+#messages li .timestamp .delete{margin-left:1ex;}
 #messages .first .avatar{width:60px;height:60px;}
 #messages .even .avatar{float:right;margin-right:0;margin-left:15px;}
 pre{overflow:auto;font-family:Monaco,Courier,monospace;font-size:12px;max-height:500px;}
@@ -84,10 +84,12 @@ pre{overflow:auto;font-family:Monaco,Courier,monospace;font-size:12px;max-height
 .input label{color:#999;font-size:19px;line-height:19px;padding-top:11px;float:left;margin-right:10px;}
 .input input{width:300px;margin:0 10px 0 0;padding:12px 10px 8px 10px;border:0;font-size:19px;font-weight:bold;float:left;}
 #diff{padding:10px;background-color:#222;position:relative;}
-#diff_actions{margin:10px 0 40px 0;text-align:right;color:#666;}
+#diff_actions{margin-bottom:40px;text-align:center;color:#666;font-size:21px;}
 #download{position:absolute;top:10px;right:-75px;width:65px;padding:5px;background-color:#333;text-align:center;font-size:12px;}
 #error_explanation{color:#ed1c38;margin-bottom:40px;}
 #error_explanation h2{font-size:19px;}
 #error_explanation ul{list-style-type:none;margin:10px 20px 0 20px;}
 .field_with_errors{float:left;}
 .field_with_errors input,.field_with_errors textarea{border:3px solid #ed1c38;}
+#voice input{border:0;padding:4px;width:300px;font-size:13px;line-height:13px;font-weight:bold;}
+#voice button{margin-left:10px;font-size:13px;font-weight:bold;text-shadow:0 1px 1px #eee;background:#aaa;border:1px solid #222;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;cursor:pointer;white-space:nowrap;padding:4px 8px;-moz-box-shadow:0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(255,255,255,0.7) inset;-webkit-box-shadow:0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(255,255,255,0.7) inset;box-shadow:0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(255,255,255,0.7) inset;}
