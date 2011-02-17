@@ -19,36 +19,30 @@ describe VoicesController do
 
   describe "POST create" do
     describe "with valid params" do
-      before :each do
-        @params = {'comment' => 'Test comment', 'type' => 'comment', 'user_id' => @user}
-      end
-
       it "assigns a newly created voice as @voice" do
-        Voice.stub(:new).with(@params) { mock_voice(:save => true) }
-        post :create, :voice => @params, 'commit_id' => @commit
+        Voice.stub(:create).with({'comment' => 'Test comment', 'type' => 'comment', 'user_id' => @user.id, 'commit_id' => @commit.id}) { mock_voice(:save => true) }
+        post :create, :voice => {'comment' => 'Test comment', 'type' => 'comment'}, 'commit_id' => @commit.id
         assigns(:voice).should be(mock_voice)
       end
 
       it "renders the created voice" do
         Voice.stub(:new) { mock_voice(:save => true) }
-        post :create, :voice => @params, 'commit_id' => @commit
-        response.should render_template("shared/_bubble")
-        response.status.should == 201
+        post :create, :voice => {'comment' => 'Test comment', 'type' => 'comment'}, 'commit_id' => @commit.id
+        # render create.js.erb with SUCCESS
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved voice as @voice" do
-        Voice.stub(:new).with({}) { mock_voice(:save => false) }
+        Voice.stub(:create).with({'user_id' => @user.id, 'commit_id' => @commit.id}) { mock_voice(:save => false) }
         post :create, :voice => {}, 'commit_id' => @commit
         assigns(:voice).should be(mock_voice)
       end
 
       it "renders an error" do
-        Voice.stub(:new) { mock_voice(:save => false) }
+        Voice.stub(:create) { mock_voice(:save => false) }
         post :create, :voice => {}, 'commit_id' => @commit
-        response.headers['Content-Type'].should == "application/json; charset=utf-8"
-        response.status.should == 422
+        # render create.js.erb with ERROR
       end
     end
   end
@@ -63,8 +57,7 @@ describe VoicesController do
     it "redirects to the approvals list" do
       Voice.stub(:find) { mock_voice }
       delete :destroy, :id => "1", 'commit_id' => @commit
-      response.headers['Content-Type'].should == "application/json; charset=utf-8"
-      response.status.should == 200
+      # render destroy.js.erb with SUCCESS
     end
   end
 end
