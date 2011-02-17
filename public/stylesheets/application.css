@@ -71,6 +71,7 @@ input[type="file"]{font-size:17px;font-weight:bold;white-space:nowrap;padding:10
 .first .bubble{border-bottom:1px solid #444;border-right:1px solid #444;max-width:460px;background:#fff;font-size:21px;font-weight:bold;padding:20px 30px;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;}
 .first .bubble:before{top:20px;left:0%;background:#fff;}
 #messages li .timestamp{font-size:11px;color:#666;margin-top:10px;text-align:center;display:inline-block;width:100%;}
+#messages li .timestamp a.delete{margin-left:1em;}
 #messages .first .avatar{width:60px;height:60px;}
 #messages .even .avatar{float:right;margin-right:0;margin-left:15px;}
 pre{overflow:auto;font-family:Monaco,Courier,monospace;font-size:12px;max-height:500px;}
