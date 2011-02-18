@@ -26,9 +26,9 @@ describe VoicesController do
       end
 
       it "renders the created voice" do
-        Voice.stub(:new) { mock_voice(:save => true) }
+        Voice.stub(:create) { mock_voice(:save => true) }
         post :create, :voice => {'comment' => 'Test comment', 'type' => 'comment'}, 'commit_id' => @commit.id
-        # render create.js.erb with SUCCESS
+        response.should render_template("create")
       end
     end
 
@@ -42,7 +42,7 @@ describe VoicesController do
       it "renders an error" do
         Voice.stub(:create) { mock_voice(:save => false) }
         post :create, :voice => {}, 'commit_id' => @commit
-        # render create.js.erb with ERROR
+        response.should render_template("create")
       end
     end
   end
@@ -57,7 +57,7 @@ describe VoicesController do
     it "redirects to the approvals list" do
       Voice.stub(:find) { mock_voice }
       delete :destroy, :id => "1", 'commit_id' => @commit
-      # render destroy.js.erb with SUCCESS
+      response.should render_template("destroy")
     end
   end
 end
