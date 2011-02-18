@@ -17,8 +17,11 @@
     <%= bubble.class == Commit ? "Commit" : bubble.tone.titlecase %> from <%= mail_to bubble.user.email %> on <time datetime="<%= bubble.created_at.iso8601 %>"><%= bubble.created_at.strftime("%A, %B #{bubble.created_at.day.ordinalize} at %l:%M%p") %></time>.
 
     <% if current_user == bubble.user %>
-      <% path_method = (bubble.class == Commit) ? send("commit_path".to_sym, bubble) : send("commit_voice_path".to_sym, {:commit_id => bubble.commit, :id => bubble}) %>
-      <%= link_to "Delete", path_method, :method => :delete, :class => "delete", :confirm => "Are you sure?", :remote => (bubble.class == Commit ? false : true) %>
+      <% if bubble.class == Commit %>
+        <%= link_to "Delete", commit_path(bubble), :method => :delete, :class => "delete", :confirm => "Are you sure?" %>
+      <% else %>
+        <%= link_to "Delete", commit_voice_path(bubble.commit, bubble, :format => :js), :method => :delete, :class => "delete", :confirm => "Are you sure?", :remote => true %>
+      <% end %>
     <% end %>
   </p>
 <% end %>
