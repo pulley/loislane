@@ -1,6 +1,4 @@
 class VoicesController < ApplicationController
-  respond_to :js
-
   before_filter :verify_ownership, :only => [:destroy]
 
   # POST /commits/1/voices
@@ -12,7 +10,7 @@ class VoicesController < ApplicationController
     @voice.commit = @commit
     @voice.save
 
-    respond_with @voice
+    render :format => :js
   end
 
   # DELETE /commits/1/voices/1
@@ -21,7 +19,7 @@ class VoicesController < ApplicationController
 
     @voice.destroy
 
-    respond_with @voice
+    render :format => :js
   end
 
   private
