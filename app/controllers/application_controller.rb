@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
     # Returns the user that has logged in
     def current_user
-      @current_user ||= User.find(cookie[:user_id]) if cookie[:user_id]
+      @current_user ||= User.find(cookies[:user_id]) if cookies[:user_id]
     end
     helper_method :current_user
 end
