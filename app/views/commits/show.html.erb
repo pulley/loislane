@@ -17,8 +17,7 @@
     <% end %>
 
     <div id="voice">
-      <% tones_array = Voice.tones.map{ |tone| [tone.titlecase, tone] } %>
-      I have a <%= f.select :tone, tones_array %>, <%= f.text_field :comment %> <%= content_tag :button, "Speak up!", :type => :submit %>
+      I have a <%= f.select :tone, Voice.tones.map{ |tone| [tone.titlecase, tone] } %>, <%= f.text_field :comment %> <%= content_tag :button, "Speak up!", :type => :submit %>
     </div>
   <% end %>
 </div>

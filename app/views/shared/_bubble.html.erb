@@ -4,7 +4,7 @@
   css_arr << 'even' if bubble_counter % 2 != 0
   css_class = css_arr.join(" ")
 %>
-<%= content_tag "li", :class => (css_class unless css_class.blank?) do %>
+<%= content_tag "li", :class => (css_class unless css_class.blank?), :id => "bubble_#{bubble.respond_to?(:tone) ? bubble.tone : "commit"}_#{bubble.id}" do %>
   <div>
     <%= image_tag(bubble.user.avatar.thumbnail.url, :alt => bubble.user.email, :class => "avatar") %>
     <div class="bubble <%= bubble.class == Commit ? "commit" : bubble.tone %>">

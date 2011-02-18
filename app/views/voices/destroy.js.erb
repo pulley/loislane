@@ -1,0 +1,8 @@
+$('<%= "bubble_#{@voice.respond_to?(:tone) ? @voice.tone : "commit"}_#{@voice.id}" %>').remove();
+
+<%
+  flash = {}
+  flash[:notice] = "You're #{@voice.tone} has been removed."
+%>
+
+$(document.body).insert('<%= escape_javascript(render(:partial => 'shared/flash_messages', :locals => {:flash => flash})) %>');
