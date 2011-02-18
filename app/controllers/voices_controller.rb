@@ -1,6 +1,8 @@
 class VoicesController < ApplicationController
   respond_to :js
 
+  before_filter :verify_ownership, :only => [:destroy]
+
   # POST /commits/1/voices
   def create
     @commit = Commit.find(params[:commit_id])
@@ -21,4 +23,16 @@ class VoicesController < ApplicationController
 
     respond_with @voice
   end
+
+  private
+
+    def verify_ownership
+      @voice = Voice.find(params[:id])
+
+      if current_user != @voice.user
+        return false
+      else
+        return true
+      end
+    end
 end
