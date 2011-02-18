@@ -20,13 +20,13 @@ describe VoicesController do
   describe "POST create" do
     describe "with valid params" do
       it "assigns a newly created voice as @voice" do
-        Voice.stub(:create).with({'comment' => 'Test comment', 'type' => 'comment', 'user_id' => @user.id, 'commit_id' => @commit.id}) { mock_voice(:save => true) }
+        Voice.stub(:new).with({'comment' => 'Test comment', 'type' => 'comment'}) { mock_voice(:save => true) }
         post :create, :voice => {'comment' => 'Test comment', 'type' => 'comment'}, 'commit_id' => @commit.id
         assigns(:voice).should be(mock_voice)
       end
 
       it "renders the created voice" do
-        Voice.stub(:create) { mock_voice(:save => true) }
+        Voice.stub(:new) { mock_voice(:save => true) }
         post :create, :voice => {'comment' => 'Test comment', 'type' => 'comment'}, 'commit_id' => @commit.id
         response.should render_template("create")
       end
@@ -34,13 +34,13 @@ describe VoicesController do
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved voice as @voice" do
-        Voice.stub(:create).with({'user_id' => @user.id, 'commit_id' => @commit.id}) { mock_voice(:save => false) }
+        Voice.stub(:new).with({}) { mock_voice(:save => false) }
         post :create, :voice => {}, 'commit_id' => @commit
         assigns(:voice).should be(mock_voice)
       end
 
       it "renders an error" do
-        Voice.stub(:create) { mock_voice(:save => false) }
+        Voice.stub(:new) { mock_voice(:save => false) }
         post :create, :voice => {}, 'commit_id' => @commit
         response.should render_template("create")
       end

@@ -5,8 +5,10 @@ class VoicesController < ApplicationController
 
   # POST /commits/1/voices
   def create
-    @voice = Voice.create(params[:voice].merge({:user_id => current_user.id, :commit_id => @commit.id}))
-
+    @voice = Voice.new(params[:voice])
+    @voice.user = current_user
+    @voice.commit = @commit
+    @voice.save
     respond_with @voice
   end
 
