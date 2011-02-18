@@ -20,7 +20,7 @@ class Commit < ActiveRecord::Base
   end
 
   def diff_source
-    if self.diff.file.extension == self.diff.file.filename
+    if self.diff.file.extension == self.diff.file.filename || self.diff.file.extension == "txt"
       type = "diff"
     else
       type = self.diff.file.extension
