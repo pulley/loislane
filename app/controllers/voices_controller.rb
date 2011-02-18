@@ -27,7 +27,7 @@ class VoicesController < ApplicationController
     def verify_ownership
       @voice = Voice.find(params[:id])
 
-      if current_user != @voice.user
+      if @voice.blank? || current_user != @voice.user
         return false
       else
         return true
