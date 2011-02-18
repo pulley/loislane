@@ -1,3 +1,7 @@
+<% if @voice.errors.blank? %>
+  $('messages').insert('<%= escape_javascript(render(:partial => 'shared/bubble', :locals => {:bubble => @voice, :bubble_counter => @voice.commit.voices.count})) %>');
+<% end %>
+
 <%
   flash = {}
   if @voice.errors.blank?
