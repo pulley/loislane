@@ -11,6 +11,8 @@ class Commit < ActiveRecord::Base
 
   mount_uploader :diff, DiffUploader
 
+  paginates_per 10
+
   def approvals
     voices.where(:tone => "approval")
   end

@@ -3,7 +3,7 @@ class CommitsController < ApplicationController
 
   # GET /commits
   def index
-    @commits = Commit.all
+    @commits = Commit.all.page(params[:page])
   end
 
   # GET /commits/1

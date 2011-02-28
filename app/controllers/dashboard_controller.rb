@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
   # GET /
   def start
-    @commits = Commit.reviewable
+    @commits = Commit.reviewable.page(params[:page])
   end
 
   # GET /help
