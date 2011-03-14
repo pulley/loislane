@@ -1,3 +1,4 @@
+$:.unshift(File.expand_path('./lib', ENV['rvm_path'])) # Add RVM's lib directory to the load path.
 require 'rvm/capistrano'
 
 default_run_options[:pty] = true  # Must be set for the password prompt from git to work
@@ -20,7 +21,7 @@ role :db,  "xserve.tii.trb", :primary => true        # This is where Rails migra
 
 namespace :deploy do
   task :after_update_code do
-    run "cd #{latest_release} && bundle install --quiet --without development test deploy"
+    run "cd #{release_path} && bundle install --quiet --without development test deploy"
   end
 
   task :start do ; end
