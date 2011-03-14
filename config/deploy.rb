@@ -19,10 +19,6 @@ role :app, "xserve.tii.trb"                          # This may be the same as y
 role :db,  "xserve.tii.trb", :primary => true        # This is where Rails migrations will run
 
 namespace :deploy do
-  task :after_update_code do
-    run "cd #{release_path} && bundle install --quiet --without development test deploy"
-  end
-
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
@@ -32,6 +28,7 @@ namespace :deploy do
   task :symlink_shared do
     run "ln -snf #{shared_path}/configs/ldap.rb #{release_path}/config/initializers"
     run "ln -snf #{shared_path}/uploads #{release_path}/public/uploads"
+    run "cd #{release_path} && bundle install --quiet --without development test deploy"
   end
 end
 
