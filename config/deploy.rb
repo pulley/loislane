@@ -3,6 +3,8 @@ require 'rvm/capistrano'
 set :rvm_type, :user
 set :rvm_ruby_string, 'ree-1.8.7-2011.03@loislane'
 
+set :deploy_via, :copy
+
 default_run_options[:pty] = true  # Must be set for the password prompt from git to work
 
 set :application, "loislane"
@@ -28,7 +30,7 @@ namespace :deploy do
   task :symlink_shared do
     run "ln -snf #{shared_path}/configs/ldap.rb #{release_path}/config/initializers"
     run "ln -snf #{shared_path}/uploads #{release_path}/public/uploads"
-    run "cd #{release_path} && bundle install --quiet --without development test deploy"
+    run "cd #{release_path} && bundle install --quiet --without development test"
   end
 end
 
