@@ -1,5 +1,7 @@
 $:.unshift(File.expand_path('./lib', ENV['rvm_path'])) # Add RVM's lib directory to the load path.
 require 'rvm/capistrano'
+set :rvm_type, :user
+set :rvm_ruby_string, 'ree-1.8.7-2011.03@loislane'
 
 default_run_options[:pty] = true  # Must be set for the password prompt from git to work
 
@@ -11,9 +13,6 @@ set :user, "tribunedev"
 set :runner, user
 set :use_sudo, false
 set :deploy_to, "/Users/#{user}/Sites/#{application}"
-
-set :rvm_type, :user
-set :rvm_ruby_string, 'ree-1.8.7-2011.03@loislane'
 
 role :web, "xserve.tii.trb"                          # Your HTTP server, Apache/etc
 role :app, "xserve.tii.trb"                          # This may be the same as your `Web` server
